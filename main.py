@@ -18,21 +18,22 @@ PATH = '/home/tav/Desktop/Untitled Folder/data/'
 dataset = pd.read_csv(f'{PATH}train.csv')
 test_data = pd.read_csv(f'{PATH}test.csv')
 
-# print(train_data.info())
-# print(train_data.describe())
+print(train_data.info())
+print(train_data.describe())
 remove_cols = ['Ticket', 'Cabin', 'Cabin']
 
 numeric = ['Age', 'SibSp', 'Parch', 'Fare']  # histograms
 categorical = ['Pclass', 'Sex', 'Embarked']  # valuecount()
 
-# for i in numeric:
-#     plt.hist(dataset[i])
-#     plt.title(i)
-#     plt.show()
-# for i in categorical:
-#     plt.bar(dataset[i].value_counts().index, dataset[i].value_counts())
-#     plt.title(i)
-#     plt.show()
+for i in numeric:
+     plt.hist(dataset[i])
+     plt.title(i)
+     plt.show()
+
+for i in categorical:
+     plt.bar(dataset[i].value_counts().index, dataset[i].value_counts())
+     plt.title(i)
+     plt.show()
 
 titles = []
 for person in dataset['Name']:
@@ -188,12 +189,4 @@ print("DTRF Computation Time:%5.4f seconds" % time_elapsed_rf)
 print("DTRF Accuracy: %.4f" % rf_accuracy)
 print("DTRF Precision: %.4f" % rf_precision)
 print("DTRF Recall: %.4f" % rf_recall)
-print("DTRF AUC: %.4f" % auc_rf, "\n")
-
-
-
-
-
-
-
-
+print("DTRF AUC: %.4f" % auc_rf)
